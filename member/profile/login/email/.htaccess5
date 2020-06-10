@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Password Protected Area"
+AuthUserFile /home/nccaat6/public_html/login/email/.htpasswd
+Require valid-user

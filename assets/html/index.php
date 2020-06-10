@@ -1,0 +1,808 @@
+<?php include('includes/head.php'); ?> 
+
+
+<body>
+
+
+
+
+
+<div class="super_container">
+
+
+<?php include('includes/menu.php'); ?> 
+
+
+
+
+
+<?php include('includes/slider.php'); ?> 
+
+
+	<!-- Features -->
+
+
+<?php include('includes/home_mission.php'); ?> 
+
+
+<?php include('includes/home_search.php'); ?> 
+
+
+<?php include('includes/home_dates.php'); ?> 
+
+
+
+
+
+<?php include('includes/footer.php'); ?> 
+
+
+
+
+
+
+
+
+<div class="modal fade modal-form" id="all-modal" tabindex="-1" role="dialog">
+
+
+    <div class="modal-dialog" role="document">
+
+
+        <div class="modal-content">
+
+
+            <div class="modal-header">
+
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+
+                <h4 class="modal-title">Search</h4>
+
+
+            </div>
+
+
+            <div class="modal-body search-form pt-0">
+
+
+
+
+
+<!-- Classic tabs -->
+
+
+<div class="classic-tabs">
+
+
+
+
+
+  <ul class="nav nav-justified nav-pills" id="myClassicTab" role="tablist">
+
+
+    <li class="nav-item active">
+
+
+      <a class="nav-link  "data-toggle="tab" href="#profile-classic" >Find CAAs</a>
+
+
+    </li>
+
+
+    <li class="nav-item">
+
+
+      <a class="nav-link " data-toggle="tab" href="#tab-employers" >Employers9</a>
+
+
+    </li>
+
+
+    <li class="nav-item">
+
+
+      <a class="nav-link " data-toggle="tab" href="#tab-programs" >Programs</a>
+
+
+    </li>
+
+
+  </ul>
+
+
+  <div class="tab-content p-3" id="myClassicTabContent" style="padding:1rem" >
+
+
+    <div class="tab-pane fade active in" id="profile-classic" role="tabpanel" aria-labelledby="profile-tab-classic">
+
+
+    
+
+
+<form class="form-horizontal" action="caas">
+
+
+<div class="form-group">
+
+
+<label for="staticEmail" class="col-sm-3 control-label ">Name</label>
+
+
+<div class="col-md-9 ">
+
+
+<div class="row ">
+
+
+<div class="col-sm-6 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+<input type="text" name="f_name" class="form-control" placeholder="First Name" />
+
+
+</div>
+
+
+<div class="col-sm-6 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+<input type="text" name="l_name" class="form-control" placeholder="Last Name"  />
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>    
+
+
+
+
+
+<div class="form-group">
+
+
+<label for="staticEmail" class="col-sm-3 control-label ">City</label>
+
+
+<div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+<input type="text" name="city" class="form-control" placeholder="City" />
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label for="staticEmail" class="col-sm-3 control-label ">State And Zip</label>
+
+
+<div class="col-md-9 ">
+
+
+<div class="row ">
+
+
+<div class="col-sm-6 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+<input type="text" name="state" class="form-control" placeholder="State" />
+
+
+</div>
+
+
+<div class="col-sm-6 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+<input type="text" name="zip" class="form-control" placeholder="Zip"  />
+
+
+</div>
+
+
+</div>        
+
+
+</div>    
+
+
+</div>
+
+
+<div class="form-group">
+
+
+<label for="staticEmail" class="col-sm-3 control-label ">Employer</label>
+
+
+<div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+<input type="text" name="Employer" class="form-control" placeholder="Employer" />
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label for="staticEmail" class="col-sm-3 control-label ">Age</label>
+
+
+<div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+	<select name="age" class="form-control">
+
+
+<option value="">Select</option>
+
+
+<?php
+
+
+for($i=70;$i>=18;$i--){
+
+
+?>
+
+
+<option value="<?=$i?>"><?=$i?></option>
+
+
+<?php	
+
+
+}
+
+
+?>
+
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label for="staticEmail" class="col-sm-3 control-label ">Gender</label>
+
+
+<div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+	<select name="gender" class="form-control">
+
+
+<option value="">Select</option>
+
+
+<option value="Male">Male</option>
+
+
+<option value="Female">Female</option>
+
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">Certified Years</label>
+
+
+    <div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+		<select name="years" class="form-control">
+
+
+<option value="">Select</option>
+
+
+<?php
+
+
+for($i=date('Y');$i>=1980;$i--){
+
+
+?>
+
+
+<option value="<?=$i?>"><?=$i?></option>
+
+
+<?php	
+
+
+}
+
+
+?>
+
+
+</select>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+<div class="col-sm-12 mb-3 mb-sm-0">
+
+
+<button class="btn btn-primary btn-block">Search</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</form>
+
+
+    </div><!--caas search-->
+
+
+    <div class="tab-pane fade" id="tab-employers" role="tabpanel" aria-labelledby="follow-tab-classic">
+
+
+<form class="form-horizontal" action="employers">
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">Eemployer Name</label>
+
+
+        <div class="col-sm-9 ">
+
+
+            <input type="text" name="name" class="form-control" placeholder="Employer Name" />
+
+
+        </div>
+
+
+</div>    
+
+
+
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">City</label>
+
+
+    <div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+        <input type="text" name="city" class="form-control" placeholder="City" />
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">State And Zip</label>
+
+
+<div class="col-md-9 ">
+
+
+    <div class="row ">
+
+
+        <div class="col-sm-6 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+            <input type="text" name="state" class="form-control" placeholder="State" />
+
+
+        </div>
+
+
+        <div class="col-sm-6 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+            <input type="text" name="zip" class="form-control" placeholder="Zip"  />
+
+
+        </div>
+
+
+	</div>        
+
+
+</div>    
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+    <div class="col-sm-12 mb-3 mb-sm-0">
+
+
+	<button class="btn btn-primary btn-block">Search</button>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+</form>
+
+
+    </div>
+
+
+    <div class="tab-pane fade" id="tab-programs" role="tabpanel" aria-labelledby="contact-tab-classic">
+
+
+<form class="form-horizontal" action="programs">
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">Program Name</label>
+
+
+    <div class="col-sm-9 ">
+
+
+	    <input type="text" name="name" class="form-control" placeholder="Program Name"  />
+
+
+    </div>
+
+
+</div>    
+
+
+
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">City</label>
+
+
+    <div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+        <input type="text" name="city" class="form-control" placeholder="City" />
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">State And Zip</label>
+
+
+<div class="col-md-9 ">
+
+
+    <div class="row ">
+
+
+        <div class="col-sm-6 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+            <input type="text" name="state" class="form-control" placeholder="State" />
+
+
+        </div>
+
+
+        <div class="col-sm-6 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+            <input type="text" name="zip" class="form-control" placeholder="Zip"  />
+
+
+        </div>
+
+
+	</div>        
+
+
+</div>    
+
+
+</div>
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">Alumni</label>
+
+
+    <div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+        <input type="text" name="alumni" class="form-control" placeholder="Alumni" />
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+	<label for="staticEmail" class="col-sm-3 control-label ">Class</label>
+
+
+    <div class="col-sm-9 field-box mb-3 mb-sm-0"><!--u-form--no-brd-->
+
+
+<select name="classes" class="form-control">
+
+
+<option value="">Select</option>
+
+
+<?php
+
+
+for($i=date('Y');$i>=1980;$i--){
+
+
+?>
+
+
+<option value="<?=$i?>"><?=$i?></option>
+
+
+<?php	
+
+
+}
+
+
+?>
+
+
+</select>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+
+
+    <div class="col-sm-12 mb-3 mb-sm-0">
+
+
+	<button class="btn btn-primary btn-block">Search</button>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+</form>
+
+
+    </div>
+
+
+    
+
+
+  </div>
+
+
+
+
+
+</div>
+
+
+<!-- Classic tabs -->            
+
+
+            </div>
+
+
+        </div><!-- /.modal-content -->
+
+
+    </div><!-- /.modal-dialog -->
+
+
+</div><!--all-->
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<style>
+
+
+.modal-dialog {
+
+
+    max-width: 500px;
+
+
+}
+
+
+.modal .modal-header .close {
+
+
+    font-size: 27px;
+
+
+}
+
+
+</style>
+
+
+<script src="assets/plugins/greensock/TweenMax.min.js"></script>
+
+
+<script src="assets/plugins/greensock/TimelineMax.min.js"></script>
+
+
+<script src="assets/plugins/scrollmagic/ScrollMagic.min.js"></script>
+
+
+<script src="assets/plugins/greensock/animation.gsap.min.js"></script>
+
+
+<script src="assets/plugins/greensock/ScrollToPlugin.min.js"></script>
+
+
+<script src="assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+
+
+<script src="assets/plugins/easing/easing.js"></script>
+
+
+<script src="assets/plugins/parallax-js-master/parallax.min.js"></script>
+
+
+<script src="assets/js/custom.js"></script>
+
+
+</body>
+
+
+</html>

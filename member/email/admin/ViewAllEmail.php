@@ -1,0 +1,321 @@
+<?php
+
+
+
+    if(empty($_SESSION['admin_id']) || $_SESSION['admin_id'] == "")
+
+    {
+
+        header('Location: /logincaamember.php');
+
+    }
+
+
+
+    if(isset($_GET['act']) && $_GET['act'] == 'del'){
+
+		
+
+
+
+        $email->removeById($_GET['subject']);
+
+    }
+
+    // print_r($_SESSION['admin_id']); exit;
+
+
+    // $result = $email->getAll($_SESSION['admin_id']);
+    $result = $email->getAllAdminEmail($_SESSION['admin_id']);
+
+	//  print_r($result); exit;
+
+?>
+
+
+
+<div class="member-card card">
+
+
+
+    <h3>EMAIL</h3>
+
+
+
+    <div class="form-group">
+
+
+
+        <div class="right">
+
+
+
+            <a href="?content=../email/admin/AddNewEmail&li_class=Email" class="btn btn-primary">+ Compose New Message</a>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="clearfix"></div>
+
+
+
+    </div>
+
+
+
+
+
+    <table id="viewAllEmailTbl" class="table table-striped table-bordered nowrap" style="width:100%">
+
+
+
+        <thead>
+
+          <tr>
+
+            <th>From</th>
+
+            <th>To</th>
+
+            <th>Subject</th>
+
+            <th>Date</th>
+
+            <th>Actions</th>
+
+          </tr>
+
+        </thead>
+
+
+
+        <tbody>
+
+    <?php if($result && !empty($result)){foreach($result as $key=>$row){?>
+
+	
+
+        <tr style="<?php if($email->getUnreadMsgCnt($_SESSION['admin_id'], $row[5]) > 0) echo 'background-color: #dcdcdc;' ?>">
+
+            <td><?= $row[2]?></td>
+
+            
+
+			<td><?= $row[3]?></td>
+
+            
+
+			<td style="min-width: 16%;">
+
+                <?php $rowContents = strlen($row[5]) > 27 ? substr($row[5], 0, 27)."..." : $row[5];?>
+
+                <a href="?content=../email/admin/PreviewEmail&li_class=Email&id=<?= $row[1]?>&Uid=<?= $_SESSION['admin_id']?>&subject=<?=base64_encode($row[5])?>" title="<?= $row[5]?>">
+
+                    <?= $rowContents?> 
+
+                </a><?php if($email->getUnreadMsgCnt($_SESSION['admin_id'], $row[5]) > 0) echo '<font id="unread_label">'.$email->getUnreadMsgCnt($_SESSION['admin_id'], $row[5]).'</font>';?>
+
+            </td>
+
+            
+
+			<td style="width: 20%"><?= $row[6]; ?></td>
+
+            
+
+			<td style="width: 12%" class="text-center">
+
+                <a href="?content=../email/admin/PreviewEmail&li_class=Email&act=edit&id=<?= $row[1] ?>&Uid=<?= $_SESSION['admin_id']?>" title="View"> 
+
+                  <span class="glyphicon glyphicon-eye-open"></span>
+
+                </a>
+
+                <!-- <a onclick="confirmDelete($(this)); return false;" href="?content=../email/admin/ViewAllEmail&li_class=Email&act=del&id=<?= $row[1] ?>" title="Delete"> -->
+
+                <a onclick="checkDel('<?= base64_encode($row[5]) ?>')" title="Delete">
+
+                    <span class="glyphicon glyphicon-trash"></span>
+
+                </a>
+
+            </td>
+
+
+
+        </tr>
+
+    <?php }}?>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script>
+
+function checkDel(subject) {
+
+	
+
+    // $( "#confirmDel" ).dialog({
+
+		
+
+		// title: "",
+
+		
+
+		// modal: true,
+
+		
+
+		// buttons: { 
+
+		
+
+			// "Yes": function() { location.href="?content=../email/admin/ViewAllEmail&li_class=Email&act=del&subject="+ subject; },
+
+			
+
+			// "Cancel": function() { $(this).dialog("close"); }, 
+
+		
+
+		// }
+
+	
+
+	// });
+
+	
+
+	location.href="?content=../email/admin/ViewAllEmail&li_class=Email&act=del&subject="+ subject;
+
+}
+
+</script>
+
+ 
+
+<div id="confirmDel" title="" style="display: none;" align="center">
+
+  <p>Are you sure you want to delete this message or message chain?</p>
+
+</div>
+
+<?php 
+
+if( isset($_SESSION["resultMSG"]['type']) ){ ?>
+
+        
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    jQuery.gritter.add({
+
+
+
+        title: "<?php $_SESSION["resultMSG"]['type']==0 ? print('Notify!') : print('Success!')?>",
+
+
+
+        text: "<?= $_SESSION["resultMSG"]['msg']?>",
+
+
+
+        sticky: false,
+
+
+
+        class_name: "<?php $_SESSION["resultMSG"]['type']==0 ? print('bg-error') : print('bg-success')?>",
+
+
+
+        time: '3000'                
+
+
+
+    });
+
+})
+
+</script>
+
+<?php unset($_SESSION["resultMSG"]); ?>
+
+<?php } ?>
+
+
+
+<style type="text/css">
+
+
+
+#unread_label {
+
+    display: inline;
+
+    padding: .2em .8em .2em;
+
+    font-size: 75%;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    vertical-align: top;
+
+    border-radius: 50%;
+
+    background-color: #d9534f;
+
+	color: #ffffff;
+
+	margin-left: 3px;
+
+  }
+
+  
+
+.ui-dialog{
+
+	
+
+	-moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+
+	-webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
+	
+
+}
+
+
+
+.ui-widget-overlay {
+
+    background: #333;;
+
+    opacity: .5;
+
+    filter: Alpha(Opacity=30);
+
+} 
+
+  
+
+</style>

@@ -1,0 +1,67 @@
+/*menu*/
+.logo_text img{
+	width:172.14px;
+	height:64px;
+}
+.h-text{
+	font-family:'circle-bold';
+	font-size:19px;
+	font-weight:bold;
+	color:#000;
+}
+.link-a{
+	color:;
+}
+
+
+/*model*/
+.modal .modal-content {
+  border-radius: 0;
+  padding: 20px 20px;
+}
+.modal .close{
+	position:absolute;
+	right:0;
+}
+.modal .modal-content .modal-title {
+	width:100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.modal .modal-content .modal-header {
+  border: 0;
+  padding: 20px 0;
+  line-height: 1;
+}
+
+.modal .modal-content .modal-footer,
+.modal .modal-content .modal-body {
+  padding: 15px 0;
+}
+
+.modal .modal-content .bottom-actions {
+  font-size: 13px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.modal .modal-content .bottom-actions .link {
+  color: #DA3743;
+}
+
+.modal .modal-header .close {
+  margin-top: -25px;
+}
+
+.modal .notice {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    margin: 70px auto;
+  }
+}

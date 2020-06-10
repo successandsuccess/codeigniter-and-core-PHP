@@ -1,0 +1,12 @@
+@font-face{
+	font-family:'playfair-regular', serif;
+	src:url(../fonts/playfair-display/PlayfairDisplay-Regular.ttf) format("truetype");/*opentype*/
+	font-weight:400;
+	font-style:normal;
+}
+@font-face{
+	font-family:'playfair-bold', serif;
+	src:url(../fonts/playfair-display/PlayfairDisplay-Bold.ttf) format("truetype");/*opentype*/
+	font-weight:400;
+	font-style:normal;
+}

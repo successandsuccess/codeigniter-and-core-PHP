@@ -1,0 +1,324 @@
+<?php
+
+	
+
+    if(isset($_GET["id"]) && isset($_GET["Uid"])){
+
+    	
+
+		if(isset($_GET['subject'])){
+
+			
+
+			$email->updateReadById($_GET['Uid'], base64_decode($_GET['subject']));
+
+			
+
+		}
+
+
+		// $row = $email->getById($_GET['id']);
+        $row = $email->getByIdEmail($_GET['id']);
+
+
+
+		// $rows = $email->getAllChainsByid($_GET['id']);
+		$rows = $email->getAllChainsByidEmail($_GET['id']);
+		
+
+		// print_r($row); exit;
+
+
+
+    }
+
+    else{
+
+    	echo "No Data!";
+
+    	return;
+
+    }
+
+
+
+?>
+
+<style>
+
+.preview_post img {
+
+	
+
+	width:794px;	
+
+}
+
+
+
+</style>
+
+
+
+<div class="member-card card">
+
+    <h3>Email</h3>
+
+    <a href="?content=../email/admin/ViewAllEmail&li_class=Email" class="backbtn"><span class="glyphicon glyphicon-chevron-left"></span>Back</a>
+
+    
+
+<div class="previewEmail">
+
+	<div class="tab-content" id="myTabContent" style="padding-top: 20px">
+
+
+
+    <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+
+
+        <div class="block-border ncca-right-padding">
+
+
+
+            <div class="row">
+
+
+
+                <div class="col-md-12">
+
+
+
+                <h3 class="fs-14 mb-1 w-6">From: <?= $row[7]?> ( <?= $row[2]?> )</h3>
+
+
+
+                <h3 class="fs-14 mb-1 w-6">To: <span style="color:#969696;"><?= $row[8]?> ( <?= $row[3]?> )</span></h3>
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <p class="fs-14 text-md-right" style="color:#969696;"><?= $row[6]?></p>
+
+                </div>
+
+            </div>
+
+			<hr>
+
+			<h3 class="fs-14"><?= $row[5]?></h3>
+
+
+
+			<?php foreach($rows as $key=>$r){?>
+
+				<strong style="font-size: 9pt; background-color: #f0f0f0">
+
+					<i class="fa fa-pencil-alt"></i> <?= $r[7]?> : <?= $r[6]?>
+
+				</strong>
+
+				<div class="email-msg">
+
+				  <?= $r[4]?>
+
+
+
+				<?php if($r[9] != ""){ ?>
+
+					<i class="fas fa-paperclip" style="color: #23527c"></i>
+
+					<a href="../upload/<?= $r[9]?>" target="_blank" download><?= $r[9]?></a>
+
+				<?php } ?>
+
+
+
+				</div>
+
+	          	<hr style="margin-top: 30px;margin-bottom: 5px;">
+
+          	<?php }?>
+
+
+
+            <div class="row">
+
+	            <div class="col-md-12">
+
+	                <a href="javascript:void(0)" class="btn btn-default px-4 cl-fff" id="reply_preview_email">
+
+	                    <i class="fas fa-reply"></i>Reply
+
+	                </a>
+
+	            </div>
+
+            </div>
+
+
+
+    <div id="reply_send_box" style="display: none;">
+
+    	<form id="emailAdminForm" action="../email/admin/emailproc.php" method="post" enctype="multipart/form-data"  autocomplete="off" >
+
+	      	<div class="reply mt-2">
+
+
+
+	      		<a onclick="$('#my_file').click();" class="btn btn-secondary w-6 mb-3" style="background-color: #e5e5e5; color:#000; border: 0; margin-bottom: 10px">
+
+	      		    <i class="fas fa-paperclip"></i>
+
+	      		    Attach Files
+
+	      		</a>&nbsp;<label id="filenameshow" style=""></label>
+
+
+
+	      		<!-- <input type="hidden" name="receiver_ids" value="<?= $row[15]?>"> -->
+
+	      		<?php 
+
+			
+
+	      			/* If receiver_id is the same as like me, then replace with sender_id */
+
+                    $receiver = $_SESSION['admin_id'] == $row[14] ? $row[15] : $row[14];
+
+	      			/*>> set the latest email*/
+
+	      			$parent_id = isset($rows[ count($rows)-1 ][1]) ? $rows[count($rows)-1][1] : $_GET['id'];
+
+	      		?>
+
+	      		<input type="hidden" name="receiver_ids" value="<?= $receiver?>">
+
+	      		<input type="hidden" name="sender_id" 	 value="<?= $_SESSION['admin_id'] ?>">
+
+	      		<input type="hidden" name="receiver_type" value="members">
+
+	      		<input type="hidden" name="parent_id" 	 value="<?= $parent_id ?>">
+
+	      		<input type="hidden" name="title" 		 value="<?= $row[5] ?>">
+
+
+
+	      		<input type="file" id="my_file" style="display: none;" name="attached">
+
+	                <script>
+
+	                    $('#my_file').on('change', function(){
+
+	                        $('#filenameshow').text(this.value.replace(/.*[\/\\]/, ''));
+
+	                    });
+
+	                </script>
+
+	        	<div id="summernote"></div>
+
+	            <input type="hidden" name="msg_contents">
+
+	      	</div>
+
+
+
+	      	<div class="text-right my-3" style="margin-top: 10px">
+
+	          	<button type="submit" class="btn btn-primary px-4 cl-fff" name="submit"><i class="fas fa-paper-plane"></i>  SEND</button>
+
+	      	</div>  
+
+      	</form>          	
+
+    </div>
+
+	    </div>
+
+
+
+	</div>   
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<script src="../admin/ckeditor/ckeditor.js"></script>
+
+<script>
+
+  CKEDITOR.replace( 'summernote',{
+
+	  
+
+      toolbar: 
+
+
+
+      	[
+
+					
+
+			{ name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
+
+			{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+
+			{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+
+			{ name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+
+			'/',
+
+			{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat' ] },
+
+			{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+
+			{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+
+			'/',
+
+			{ name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+
+			{ name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+
+			{ name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+
+			{ name: 'others', items: [ '-' ] },
+
+			// { name: 'about', items: [ 'About' ] },
+
+			{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+
+			{ name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton' ] },
+
+
+
+      	],
+
+  });
+
+  
+
+  $('#reply_preview_email').click(function(e){
+
+  		$(this).css('display', 'none');
+
+  		$('#reply_send_box').show();
+
+  });
+
+</script>
+

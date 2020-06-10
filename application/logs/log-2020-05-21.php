@@ -1,0 +1,194 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2020-05-21 06:22:58 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 06:22:59 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 06:24:47 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 06:24:47 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 06:55:24 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 06:55:25 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 07:14:01 --> Severity: Warning --> mysqli::real_connect(): (HY000/1044): Access denied for user 'demouser1nccaa'@'localhost' to database 'demotest1nccaa' /home/user_dev1/public_html/system/database/drivers/mysqli/mysqli_driver.php 1001
+ERROR - 2020-05-21 07:14:01 --> Unable to connect to the database
+ERROR - 2020-05-21 07:15:58 --> Severity: Warning --> mysqli::real_connect(): (HY000/1044): Access denied for user 'demouser1nccaa'@'localhost' to database 'demotest1nccaa' /home/user_dev1/public_html/system/database/drivers/mysqli/mysqli_driver.php 1001
+ERROR - 2020-05-21 07:15:58 --> Unable to connect to the database
+ERROR - 2020-05-21 07:23:42 --> Severity: Warning --> mysqli::real_connect(): (HY000/1044): Access denied for user 'demouser1nccaa'@'localhost' to database 'demotest1nccaa' /home/user_dev1/public_html/system/database/drivers/mysqli/mysqli_driver.php 1001
+ERROR - 2020-05-21 07:23:42 --> Unable to connect to the database
+ERROR - 2020-05-21 08:15:54 --> Severity: Warning --> mysqli::real_connect(): (HY000/1044): Access denied for user 'demouser1nccaa'@'localhost' to database 'demotest1nccaa' /home/user_dev1/public_html/system/database/drivers/mysqli/mysqli_driver.php 1001
+ERROR - 2020-05-21 08:15:54 --> Unable to connect to the database
+ERROR - 2020-05-21 08:16:11 --> Severity: Warning --> mysqli::real_connect(): (HY000/1044): Access denied for user 'demouser1nccaa'@'localhost' to database 'demotest1nccaa' /home/user_dev1/public_html/system/database/drivers/mysqli/mysqli_driver.php 1001
+ERROR - 2020-05-21 08:16:11 --> Unable to connect to the database
+ERROR - 2020-05-21 08:32:26 --> Severity: Warning --> mysqli::real_connect(): (HY000/1044): Access denied for user 'demouser1nccaa'@'localhost' to database 'demotest1nccaa' /home/user_dev1/public_html/system/database/drivers/mysqli/mysqli_driver.php 1001
+ERROR - 2020-05-21 08:32:26 --> Unable to connect to the database
+ERROR - 2020-05-21 08:41:04 --> Severity: Warning --> mysqli::real_connect(): (HY000/1044): Access denied for user 'demouser1nccaa'@'localhost' to database 'demotest1nccaa' /home/user_dev1/public_html/system/database/drivers/mysqli/mysqli_driver.php 1001
+ERROR - 2020-05-21 08:41:04 --> Unable to connect to the database
+ERROR - 2020-05-21 08:42:35 --> Severity: Warning --> mysqli::real_connect(): (HY000/1044): Access denied for user 'demouser1nccaa'@'localhost' to database 'demotest1nccaa' /home/user_dev1/public_html/system/database/drivers/mysqli/mysqli_driver.php 1001
+ERROR - 2020-05-21 08:42:35 --> Unable to connect to the database
+ERROR - 2020-05-21 08:48:20 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 08:48:22 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 08:48:22 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 08:57:05 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 08:57:05 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 09:14:58 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 09:14:58 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 09:19:49 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 09:22:28 --> 404 Page Not Found: Member/admin
+ERROR - 2020-05-21 09:22:29 --> 404 Page Not Found: Member/admin
+ERROR - 2020-05-21 09:34:30 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 09:34:31 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 09:34:31 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 09:37:05 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 09:37:05 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 09:37:29 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 09:37:30 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 09:37:40 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 09:44:31 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 09:47:41 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 09:51:19 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 09:54:32 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 09:57:03 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 09:57:03 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 09:57:42 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:01:22 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:04:19 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:04:33 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:05:33 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:05:36 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:11:24 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:12:56 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:13:59 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:14:10 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:14:10 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:14:34 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:14:46 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 10:14:48 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 10:14:50 --> 404 Page Not Found: Assets/frontends
+ERROR - 2020-05-21 10:15:01 --> 404 Page Not Found: Assets/frontends
+ERROR - 2020-05-21 10:15:37 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:15:38 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 10:15:40 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 10:16:13 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 10:16:15 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 10:19:44 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 10:19:45 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 10:24:11 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:24:35 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:25:38 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:26:11 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:26:39 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:26:40 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:31:22 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 10:31:25 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 10:31:43 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:31:43 --> 404 Page Not Found: Member/programportalWeb
+ERROR - 2020-05-21 10:32:40 --> 404 Page Not Found: Member/admin
+ERROR - 2020-05-21 10:32:40 --> 404 Page Not Found: Member/admin
+ERROR - 2020-05-21 10:34:36 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:44:37 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:49:42 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:53:08 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:54:38 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 10:59:49 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:03:09 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:04:32 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 11:04:33 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 11:04:39 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:06:24 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 11:06:24 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 11:09:10 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 11:09:10 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 11:09:51 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:14:40 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:19:54 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:24:41 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:30:05 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:34:42 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:40:22 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:44:43 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 11:54:45 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 12:04:47 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 12:14:49 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 12:24:50 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 12:34:51 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 12:44:52 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 12:54:53 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 13:04:54 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 13:14:55 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 13:24:56 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 13:34:57 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 13:44:58 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 13:54:59 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 14:05:00 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 14:15:01 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 14:25:02 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 14:35:03 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 14:41:30 --> 404 Page Not Found: Assets/frontends
+ERROR - 2020-05-21 14:41:33 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 14:41:36 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 14:45:04 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 14:55:04 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:00:40 --> 404 Page Not Found: Member/admin
+ERROR - 2020-05-21 15:00:40 --> 404 Page Not Found: Member/admin
+ERROR - 2020-05-21 15:05:06 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:11:54 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:15:06 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:21:58 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:25:08 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:32:00 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:35:08 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:42:01 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:45:09 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:52:03 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 15:55:10 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:02:04 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:05:11 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:12:06 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:15:13 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:22:07 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:25:14 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:32:08 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:35:14 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:42:10 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:45:16 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:52:11 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 16:55:16 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:02:23 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:05:17 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:12:24 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:15:19 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:22:26 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:25:19 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:32:27 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:35:20 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:42:29 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:45:21 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:52:30 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 17:55:23 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 18:02:32 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 18:05:23 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 18:12:33 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 18:15:24 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 18:25:25 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 18:35:26 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 18:45:27 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 18:55:28 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 19:05:29 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 19:15:30 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 19:25:31 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 19:35:32 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 19:45:35 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 19:55:38 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 20:05:39 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 20:15:40 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 20:25:41 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 20:35:42 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 20:45:43 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 20:55:44 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 21:05:45 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 21:15:46 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 21:25:47 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 21:35:48 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 21:45:49 --> 404 Page Not Found: Member/prevent_timeout.php
+ERROR - 2020-05-21 21:53:04 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 21:53:04 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 22:28:41 --> 404 Page Not Found: Img/spin.svg
+ERROR - 2020-05-21 22:28:41 --> 404 Page Not Found: Board_files/aaaa-icon.png
+ERROR - 2020-05-21 22:28:41 --> 404 Page Not Found: Img/spin.svg

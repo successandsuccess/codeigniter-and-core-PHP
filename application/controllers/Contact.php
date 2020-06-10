@@ -1,0 +1,157 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+require_once(APPPATH.'libraries/GetResponseAPI.class.php');
+
+
+
+class Contact extends Frontend_Controller {
+
+	public $_subView = 'templates/contact/';
+
+	public function __construct(){
+
+		parent::__construct();
+
+		$this->load->model(array('custom_model'));
+
+	}
+
+
+
+	
+
+	public function index(){
+
+		$this->data['title'] = "Contact | ".$this->data['settings']['site_name'];
+
+		
+
+
+
+
+
+	 $rules = array(
+
+                    'first_name' =>array('field'=>'first_name','label'=>'First Name','rules'=>'trim|required'),
+
+                    'last_name' =>array('field'=>'last_name','label'=>'Last Name','rules'=>'trim|required'),
+
+                    'email' =>array('field'=>'email','label'=>'Email','rules'=>'trim|required|valid_email'),
+
+                    );
+
+		$this->form_validation->set_rules($rules);
+
+
+
+		//process from
+
+		if ($this->form_validation->run() == true){
+
+			$post_data = $this->comman_model->array_from_post(array('first_name','last_name','email','phone'));
+
+
+
+			$post_data['on_date'] = date('Y-m-d');
+
+			//insert data
+
+			$registerForm = $this->comman_model->save('contacts',$post_data);
+
+			$post_data['username'] = $post_data['first_name'].' '.$post_data['last_name'];
+
+			//set GetResponse api
+
+			$api = new GetResponse(GETRESPONSE_KEY);
+
+			$d= $api->addContact(CAMPAIGN_ID,$post_data['username'],$post_data['email']);
+
+			//end GetResponse api
+
+			$this->session->set_flashdata('success','Your information has been submitted; I will try and reach out to you as early as possible');
+
+			redirect('contact/succes','refresh');
+
+			die;
+
+		}
+
+		else{
+
+			redirect('front','refresh');
+
+		}
+
+		
+
+        $this->data['country_list'] = $this->custom_model->get_country_name();
+
+		
+
+		$this->load->view($this->_subView.'index',$this->data);
+
+	}
+
+	
+
+	public function succes(){
+
+		$this->data['title'] = "Contact | ".$this->data['settings']['site_name'];
+
+		
+
+
+
+
+
+		$this->load->view($this->_subView.'success',$this->data);
+
+	}
+
+
+
+	function register_email_exists(){
+
+		if (!$this->input->is_ajax_request()) {//only call in ajax
+
+			exit('No direct script access allowed');
+
+		}
+
+		if (array_key_exists('email',$_GET)) {
+
+			if ( $this->email_exists($this->input->get('email')) == TRUE ) {
+
+				echo json_encode(FALSE);
+
+			} else {
+
+				echo json_encode(TRUE);
+
+			}
+
+		}
+
+	}	
+
+
+
+	private function email_exists($email){
+
+		$this->db->where('email', $email);
+
+		$query = $this->db->get('contacts');
+
+		if( $query->num_rows() > 0 ){ return TRUE; } else { return FALSE; }
+
+	}
+
+
+
+}
+
+
+
+/* End of file welcome.php */
+
+/* Location: ./application/controllers/welcome.php */
