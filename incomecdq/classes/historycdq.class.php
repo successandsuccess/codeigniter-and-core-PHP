@@ -6,6 +6,7 @@ class PaymentHistoryCdq
     private $userInfo;
     private $table_name = "tbl_cdqhistory";
     private $table_payment = "tbl_payment";
+    
     private $table_user = "users";
     private $table_cdq = "incomecdq";
     private $table_action = "action_history_cdq";
