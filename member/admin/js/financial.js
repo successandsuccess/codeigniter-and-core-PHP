@@ -1,437 +1,1 @@
-var fieldData = {};
-$(document).ready(function() {
-    $('.datepicker').datepicker({
-        autoclose: true,
-    });
-    $('#financialLedger').DataTable({
-        "pageLength": 50,
-        "deferRender": true,
-        "orderClasses": false,
-        searching: true,
-        paging: true,
-        lengthMenu: [10, 50, 100, 500],
-    });
-    $('#financialLedger_length').css('display', 'block');
-    $('#financialLedger_info').css('display', 'block');
-    // if($.fn.dataTable.isDataTable("#financialLedger")){
-    // $("#financialLedger").css("display", "block");
-    // }
-    $('#add_cert').click(function(e) {
-        $("#add_cert_modal").modal('show');
-    });
-    $('#add_cdq').click(function(e) {
-        $("#add_cdq_modal").modal('show');
-    });
-    $('#add_cme').click(function(e) {
-        $("#add_cme_modal").modal('show');
-    });
-    $('#add_admin').click(function(e) {
-        $("#add_admin_modal").modal('show');
-    });
-    $("#cert_name").select2();
-    $("#cdq_name").select2();
-    $("#cme_name").select2();
-});
-
-function init_cert_fields() {
-    $('#cert_name').val(0);
-    $('#cert_date').val('');
-    $('#cert_4cardnum').val('');
-    $('#cert_month').val(0);
-    $('#cert_year').val('');
-    $('#cert_category').val(0);
-    $('#cert_amount').val('');
-}
-
-function init_cdq_fields() {
-    $('#cdq_name').val(0);
-    $('#cdq_date').val('');
-    $('#cdq_4cardnum').val('');
-    $('#cdq_month').val(0);
-    $('#cdq_year').val('');
-    $('#cdq_category').val(0);
-    $('#cdq_amount').val('');
-}
-
-function init_cme_fields() {
-    $('#cme_name').val(0);
-    $('#cme_date').val('');
-    $('#cme_4cardnum').val('');
-    $('#cme_year').val('');
-    $('#cme_category').val(0);
-    $('#cme_amount').val('');
-}
-/*function init_admin_fields(){
-
-
-	
-
-
-	$('#cme_name').val('');
-
-
-	$('#cme_date').val('');
-
-
-	$('#cme_4cardnum').val('');
-
-
-	$('#cme_year').val('');
-
-
-	$('#cme_category').val('');
-
-
-	$('#cme_amount').val('');
-
-
-	
-
-
-}*/
-function cert_category_change() {
-    var cert = $('#cert_category').val();
-    if (cert == 1) {
-        $('#cert_amount').val(1327.5);
-    } else if (cert == 2) {
-        $('#cert_amount').val(1593);
-    } else {
-        $('#cert_amount').val(150);
-    }
-}
-
-function cdq_category_change() {
-    var cdq = $('#cdq_category').val();
-    if (cdq == 1) {
-        $('#cdq_amount').val(1000);
-    } else if (cdq == 2) {
-        $('#cdq_amount').val(1327.5);
-    } else {
-        $('#cdq_amount').val(150);
-    }
-}
-
-function cme_category_change() {
-    var cme = $('#cme_category').val();
-    if (cme == 1) {
-        $('#cme_amount').val(235);
-    } else {
-        $('#cme_amount').val(735);
-    }
-}
-$('#add_cert_info').click(function() {
-    if ($('#cert_name').val() == "" || $('#cert_name').val() == 0) {
-        alert("Please select student");
-        $('#cert_name').focus();
-        return;
-    } else if ($('#cert_date').val() == "") {
-        $('#cert_date').focus();
-        return;
-    } else if ($('#cert_4cardnum').val() == "") {
-        $('#cert_4cardnum').focus();
-        return;
-    } else if ($('#cert_month').val() == "" || $('#cert_month').val() == 0) {
-        alert("Please select exam month.");
-        $('#cert_month').focus();
-        return;
-    } else if ($('#cert_year').val() == "" || $('#cert_year').val() == 0) {
-        $('#cert_year').focus();
-        return;
-    } else if ($('#cert_category').val() == "") {
-        $('#cert_category').focus();
-        return;
-    }
-    fieldData = {
-        cert_name: $('#cert_name').val(),
-        cert_date: $('#cert_date').val(),
-        cert_4cardnum: $('#cert_4cardnum').val(),
-        cert_month: $('#cert_month').val(),
-        cert_year: $('#cert_year').val(),
-        cert_category: $('#cert_category').val(),
-        cert_amount: $('#cert_amount').val()
-    };
-    $.ajax({
-        url: './content/financialAPI.php',
-        type: 'POST',
-        dataType: 'json',
-        data: fieldData,
-        success: function(data) {
-            if (data['statusCode'] == 1) {
-                init_cert_fields();
-                jQuery.gritter.add({
-                    title: 'Success!',
-                    text: 'Saved successfully!',
-                    sticky: false,
-                    class_name: 'bg-success',
-                    time: '1000'
-                });
-                $('#cert_name').focus();
-            } else if (data['statusCode'] == 0) {
-                jQuery.gritter.add({
-                    title: 'Failed!',
-                    text: 'Failed.',
-                    sticky: false,
-                    class_name: 'bg-error',
-                    time: '1000'
-                });
-            }
-        },
-        error: function(data) {
-            jQuery.gritter.add({
-                title: 'Failed!',
-                text: 'Failed.',
-                sticky: false,
-                class_name: 'bg-error',
-                time: '1000'
-            });
-        }
-    });
-});
-$('#add_cdq_info').click(function() {
-    if ($('#cdq_name').val() == "" || $('#cdq_name').val() == 0) {
-        alert("Please select CAA");
-        $('#cdq_name').focus();
-        return;
-    } else if ($('#cdq_date').val() == "") {
-        $('#cdq_date').focus();
-        return;
-    } else if ($('#cdq_4cardnum').val() == "") {
-        $('#cdq_4cardnum').focus();
-        return;
-    } else if ($('#cdq_month').val() == "" || $('#cdq_month').val() == 0) {
-        alert("Please select exam month.");
-        $('#cdq_month').focus();
-        return;
-    } else if ($('#cdq_year').val() == "" || $('#cdq_year').val() == 0) {
-        $('#cdq_year').focus();
-        return;
-    } else if ($('#cdq_category').val() == "") {
-        $('#cdq_category').focus();
-        return;
-    }
-    fieldData = {
-        cdq_name: $('#cdq_name').val(),
-        cdq_date: $('#cdq_date').val(),
-        cdq_4cardnum: $('#cdq_4cardnum').val(),
-        cdq_month: $('#cdq_month').val(),
-        cdq_year: $('#cdq_year').val(),
-        cdq_category: $('#cdq_category').val(),
-        cdq_amount: $('#cdq_amount').val()
-    };
-    $.ajax({
-        url: './content/financialAPI.php',
-        type: 'POST',
-        dataType: 'json',
-        data: fieldData,
-        success: function(data) {
-            if (data['statusCode'] == 1) {
-                init_cdq_fields();
-                jQuery.gritter.add({
-                    title: 'Success!',
-                    text: 'Saved successfully!',
-                    sticky: false,
-                    class_name: 'bg-success',
-                    time: '1000'
-                });
-                $('#cdq_name').focus();
-            } else if (data['statusCode'] == 0) {
-                jQuery.gritter.add({
-                    title: 'Failed!',
-                    text: 'Failed.',
-                    sticky: false,
-                    class_name: 'bg-error',
-                    time: '1000'
-                });
-            }
-        },
-        error: function(data) {
-            jQuery.gritter.add({
-                title: 'Failed!',
-                text: 'Failed.',
-                sticky: false,
-                class_name: 'bg-error',
-                time: '1000'
-            });
-        }
-    });
-});
-$('#add_cme_info').click(function() {
-    if ($('#cme_name').val() == "" || $('#cme_name').val() == 0) {
-        alert("Please select CAA");
-        $('#cme_name').focus();
-        return;
-    } else if ($('#cme_date').val() == "") {
-        $('#cme_date').focus();
-        return;
-    } else if ($('#cme_4cardnum').val() == "") {
-        $('#cme_4cardnum').focus();
-        return;
-    } else if ($('#cme_year').val() == "" || $('#cme_year').val() == 0) {
-        $('#cme_year').focus();
-        return;
-    } else if ($('#cme_category').val() == "") {
-        $('#cme_category').focus();
-        return;
-    }
-    fieldData = {
-        cme_name: $('#cme_name').val(),
-        cme_date: $('#cme_date').val(),
-        cme_4cardnum: $('#cme_4cardnum').val(),
-        cme_year: $('#cme_year').val(),
-        cme_category: $('#cme_category').val(),
-        cme_amount: $('#cme_amount').val()
-    };
-    $.ajax({
-        url: './content/financialAPI.php',
-        type: 'POST',
-        dataType: 'json',
-        data: fieldData,
-        success: function(data) {
-            if (data['statusCode'] == 1) {
-                init_cme_fields();
-                jQuery.gritter.add({
-                    title: 'Success!',
-                    text: 'Saved successfully!',
-                    sticky: false,
-                    class_name: 'bg-success',
-                    time: '1000'
-                });
-                $('#cme_name').focus();
-            } else if (data['statusCode'] == 0) {
-                jQuery.gritter.add({
-                    title: 'Failed!',
-                    text: 'Failed.',
-                    sticky: false,
-                    class_name: 'bg-error',
-                    time: '1000'
-                });
-            }
-        },
-        error: function(data) {
-            jQuery.gritter.add({
-                title: 'Failed!',
-                text: 'Failed.',
-                sticky: false,
-                class_name: 'bg-error',
-                time: '1000'
-            });
-        }
-    });
-});
-
-function tr_baground(e) {
-    if ($("#check_financial" + e).is(':checked')) {
-        $("#financial_tr" + e).css('background-color', '#B0BED9');
-    } else {
-        $("#financial_tr" + e).css('background-color', '');
-    }
-}
-
-function edit_financial_modal(e) {
-    $('#edit_financial' + e).modal('show');
-}
-
-function update_financial(e) {
-    var fieldData = {
-        edit_id: e,
-        edit_date: $('#edit_date' + e).val(),
-        edit_description: $('#edit_description' + e).val(),
-        edit_category: $('#edit_category' + e).val(),
-        edit_amount: $('#edit_amount' + e).val(),
-        add_amount: ''
-    };
-    $.ajax({
-        url: '?content=content/financial&li_class=Financials&li_class=Financials',
-        type: 'POST',
-        dataType: 'json',
-        data: fieldData,
-        success: function(data) {
-            location.href = '?content=content/financial&li_class=Financials';
-        },
-        error: function(data) {
-            location.href = '?content=content/financial&li_class=Financials';
-        }
-    });
-}
-
-function delete_financial(e) {
-    var fieldData = {
-        delete_id: e,
-        add_amount: ''
-    };
-    $.ajax({
-        url: '?content=content/financial&li_class=Financials&li_class=Financials',
-        type: 'POST',
-        dataType: 'json',
-        data: fieldData,
-        success: function(data) {
-            location.href = '?content=content/financial&li_class=Financials';
-        },
-        error: function(data) {
-            location.href = '?content=content/financial&li_class=Financials';
-        }
-    });
-}
-
-function financial_filter_year() {
-    var select_year = $('#select_year').val();
-    var select_term = $('#select_term').val();
-    var select_type = $('#select_type').val();
-    if (select_year != 'null') {
-        if (select_year == new Date().getFullYear() && select_term == 'Last_Year') {
-            select_term = 'null';
-        } else if ((select_year == (new Date().getFullYear() - 1)) && (select_term == 'Today' || select_term == 'Week' || select_term == 'Month' || select_term == 'Quarter' || select_term == 'Year')) {
-            select_term = 'null';
-        } else if ((select_year > new Date().getFullYear()) && (select_term == 'Today' || select_term == 'Week' || select_term == 'Month' || select_term == 'Quarter' || select_term == 'Year' || select_term == 'Last_Year')) {
-            select_term = 'null';
-        }
-    }
-    location.href = "?content=content/financial&li_class=Financials&s_year=" + select_year + "&s_term=" + select_term + "&s_type=" + select_type + "";
-}
-
-function financial_filter_term() {
-    var select_year = $('#select_year').val();
-    var select_term = $('#select_term').val();
-    var select_type = $('#select_type').val();
-    if (select_term == 'Today' || select_term == 'Week' || select_term == 'Month' || select_term == 'Quarter' || select_term == 'Year') {
-        select_year = new Date().getFullYear();
-    } else if (select_term == 'Last_Year') {
-        select_year = (new Date().getFullYear() - 1);
-    }
-    location.href = "?content=content/financial&li_class=Financials&s_year=" + select_year + "&s_term=" + select_term + "&s_type=" + select_type + "";
-}
-
-function financial_filter_type() {
-    var select_year = $('#select_year').val();
-    var select_term = $('#select_term').val();
-    var select_type = $('#select_type').val();;
-    location.href = "?content=content/financial&li_class=Financials&s_year=" + select_year + "&s_term=" + select_term + "&s_type=" + select_type + "";
-}
-//newWin.document.write("<style> td:nth-child(2){display:none;} </style>");
-function checked_tr_hide() {
-    for (var i = 0; i < $("#count_tr").val(); i++) {
-        if ($("#check_financial" + i).is(':checked')) {
-            true;
-        } else {
-            $("#print_financial_tr" + i).css('display', 'none');
-        }
-    }
-}
-
-function print_admin_financial(elem) {
-    // $(".close").hide();
-    checked_tr_hide();
-    $("#print_financialLedger").show();
-    $("div").hide();
-    var domClone = elem.cloneNode(true);
-    var $printSection = document.getElementById("printSection");
-    if (!$printSection) {
-        var $printSection = document.createElement("div");
-        $printSection.id = "printSection";
-        document.body.appendChild($printSection);
-    }
-    $printSection.innerHTML = "";
-    $printSection.appendChild(domClone);
-    window.print();
-    location.href = "?content=content/financial&li_class=Financials";
-}
+var fieldData = {};var gTotalRow = 0;var maxinumPageButton = 7;var sideButtonNumber = 3;var orderBy = {	column: "action_date",	desc: true,};$(document).ready(function() {	/*	*  Serhii Code Start	* */	var pageNumber = 1;	pullTableResult();	$("#search-input").keyup(function (event) {		if (event.keyCode == "13") {			pageNumber = 1;			pullTableResult();		}	});	$("#search-button").click(function () {		pageNumber = 1;		pullTableResult();	});	$("#entry-select").change(function () {		pageNumber = 1;		pullTableResult();	});	$("#select_year").change(function () {		pageNumber = 1;		pullTableResult();	});	$("#select_term").change(function () {		pageNumber = 1;		pullTableResult();	});	$("#select_type").change(function () {		pageNumber = 1;		pullTableResult();	});	$("#print_check_th").click(function () {		$children = $("#financial_table_main").children();		$children.sort(function (a, b) {			if ($(a).children().first().children().first()[0].checked &&				$(b).children().first().children().first()[0].checked) {				return 0;			} else if ($(a).children().first().children().first()[0].checked) {				return -1;			} else if ($(b).children().first().children().first()[0].checked) {				return 1;			} else {				return 0;			}		});		$("#financial_table_main").html("");		$("#financial_table_main").append($children);	});	$("#header-line th").click(function () {		$icon = ($(this).children().first());		if ($icon.attr("name") !== "print_check_input") {			if ($icon.attr("name") == orderBy.column) {				$icon.toggleClass("arrow-top");				orderBy.desc = !orderBy.desc;			} else {				$(".arrow-top").removeClass("arrow-top");				orderBy.column = $icon.attr("name");				orderBy.desc = true;			}			pageNumber = 1;			pullTableResult();		}	});	function pullTableResult() {		var select_year = $("#select_year").val();		var select_term = $("#select_term").val();		var select_type = $("#select_type").val();		var entry_length = $("#entry-select").val();		var keyword = $("#search-input").val();		var sort = orderBy;		$.ajax({			url: "content/loadFinancialTableData.php",			type: "post",			data: {				s_year: select_year,				s_type: select_type,				s_term: select_term,				s_entry: entry_length,				s_page: pageNumber - 1,				s_keyword: keyword,				s_sort: sort			},			success: function(result, status) {				if (status == "success") {					var ret = JSON.parse(result);					var totalRow = ret.total_row[0].total_count;					gTotalRow = totalRow;					var tableData = ret.data;					showPagination(totalRow);					showTable(tableData);					showPrintTable(tableData);				} else {					/**					 * TODO error					 */				}			}		});	}	function showInformText(totalRow) {		var entry = $("#entry-select").val();		var text = "Showing " + (parseInt(entry * (pageNumber - 1)) + 1) +			" to " + (entry * pageNumber > totalRow ? totalRow : entry * pageNumber) + " of " + totalRow + " entries";		$("#inform_text").text(text);	}	function showPagination(totalRow) {		if (totalRow == 0) {			$("#footer-row").css("display", "none");		} else {			$("#footer-row").css("display", "block");			showInformText(totalRow);			var startButton = $("#start_button");			var endButton = $("#end_button");			var previousButton = $("#previous_button");			var nextButton = $("#next_button");			var pageButton = $("#normal_button");			var pageRow = $("#entry-select").val();			var numberOfButtons;			if (Math.floor(totalRow / pageRow) < totalRow / pageRow) {				numberOfButtons = Math.floor(totalRow / pageRow) + 1;			} else {				numberOfButtons = Math.floor(totalRow / pageRow);			}			$("#pagination_buttons").html("");			if (startButton.hasClass("disabled")) {				startButton.removeClass("disabled");			}			if (endButton.hasClass("disabled")) {				endButton.removeClass("disabled");			}			if (previousButton.hasClass("disabled")) {				previousButton.removeClass("disabled");			}			if (nextButton.hasClass("disabled")) {				nextButton.removeClass("disabled");			}			if (pageNumber == 1) {				startButton.addClass("disabled");				previousButton.addClass("disabled");			} else {				startButton.click(function () {					startPage();				});				previousButton.click(function () {					previousPage();				});			}			if (pageNumber == numberOfButtons) {				endButton.addClass("disabled");				nextButton.addClass("disabled");			} else {				endButton.click(function () {					endPage(numberOfButtons);				});				nextButton.click(function () {					nextPage();				});			}			$("#pagination_buttons").append(startButton, previousButton);			var start = 0;			var end = 0;			if (numberOfButtons <= maxinumPageButton) {				start = 1;				end = numberOfButtons;			} else {				if (pageNumber <= sideButtonNumber) {					start = 1;					end = maxinumPageButton;				} else if (pageNumber > (numberOfButtons - sideButtonNumber)) {					start = numberOfButtons - (maxinumPageButton - 1);					end = numberOfButtons;				} else {					start = pageNumber - sideButtonNumber;					end = pageNumber + sideButtonNumber;				}			}			for (var i = start; i <= end; i++) {				if (pageButton.hasClass("active")) {					pageButton.removeClass("active");				}				var temp = pageButton.clone();				if (i == pageNumber) {					temp.addClass("active");				}				temp.children()[0].text = i;				temp.attr("page", i);				temp.click(function () {					navigatePage($(this).attr("page"));				});				$("#pagination_buttons").append(temp);			}			$("#pagination_buttons").append(nextButton, endButton);		}	}	function startPage() {		if (!$("#start_button").hasClass("disabled")) {			pageNumber = 1;			pullTableResult();		}	}	function endPage(num) {		if (!$("#end_button").hasClass("disabled")) {			pageNumber = num;			pullTableResult();		}	}	function previousPage() {		if (!$("#previous_button").hasClass("disabled")) {			pageNumber = parseInt(pageNumber) - 1;			pullTableResult();		}	}	function nextPage() {		if (!$("#next_button").hasClass("disabled")) {			pageNumber = parseInt(pageNumber) + 1;			pullTableResult();		}	}	function navigatePage(num) {		pageNumber = parseInt(num);		pullTableResult();	}	// function category_title(exam_mon, exam_year, cme_cycle, exam_type, admin_title) {	// 	var stmt = "";	// 	if (exam_type == "CDQ") {	// 		stmt = "Income: " + readActionExamMon(exam_mon) + " " + exam_year + " CDQ Exam";	// 	}else if (exam_type == "CME") {	// 		stmt = "Income: June " + (parseInt(cme_cycle) + 2) + " CME Registration";	// 	}else if (exam_type == "Certification") {	// 		stmt = "Income: " + readActionExamMon(exam_mon)  + " " + exam_year + " Certification Exam";	// 	}else if (exam_type == "Admin") {	// 		stmt = admin_title;	// 	}	// 	return stmt;	// }	//	// function readActionExamMon(id) {	// 	var exam_mon = "";	// 	if(id == 2){	// 		exam_mon = "Feb";	// 	} else if(id == 6) {	// 		exam_mon = "June";	// 	} else if(id == 10) {	// 		exam_mon = "Oct";	// 	}	//	// 	return exam_mon;	// }	// function pay_amount(num, exam_type) {	// 	var stmt = "";	// 	if(exam_type == "CDQ"){	// 		stmt = readCDQAmount(num);	// 	}else if(exam_type == "CME"){	// 		stmt = readCMEAmount(num);	// 	}else if(exam_type == "Certification"){	// 		stmt = readCertAmount(num);	// 	}else if(exam_type == "Admin"){	// 		stmt = numberFormat(num, 2);	// 	}	// 	return stmt;	// }	//	// function readCDQAmount(num) {	// 	var content = [	// 		"",	// 		"$1,000.00",	// 		"$1,327.50",	// 		"$150.00",	// 		"$150.00"	// 	];	// 	var stmt = content[num];	// 	return stmt;	// }	//	// function readCMEAmount($num) {	// 	var content = [	// 		"",	// 		"$235.00",	// 		"$735.00"	// 	];	// 	var stmt = content[$num];	// 	return stmt;	// }	//	// function readCertAmount(num) {	// 	var content = [	// 		"",	// 		"$1,327.50", //1	// 		"$1,593.00", //2	// 		"$150.00", //3	// 		"$150.00", //4	// 		"$150.00", //5	// 		"$150.00", //6	// 		"$150.00" //7	// 	];	// 	var stmt = content[num];	// 	return stmt;	// }	function showPrintTable(info) {		var rows = "";		var row = "";		if (info.length == 0) {			row = "<tr style='cursor:pointer;'>" +				"<td colspan='6' align='center'>No registered data</td>" +				"</tr>";			rows += row;		} else {			for (var i = 0; i < info.length; i++) {				row = "<tr id='print_financial_tr" + i + "' style='cursor:pointer;'>";				if (info[i].exam_type == "Admin") {					row += "<td style='width:20%;' onclick='javascript:edit_financial_modal(" + JSON.stringify(info[i]) + ")'>";				} else {					row += "<td style='width:20%;'>";				}				row += info[i].readable_action_date;				row += "</td>";				row += "<td style='width:15%'>" + info[i].user_id + "</td>";				if (info[i].exam_type == "Admin") {					row += "<td style='width:20%;' onclick='javascript:edit_financial_modal(" + JSON.stringify(info[i]) + ")'>";				} else {					row += "<td style='width:20%;'>";				}				row += info[i].full_name;				row += "</td>";				row += "<td style='width:40%;'>";				// row += category_title(info[i].exam_mon, info[i].exam_year, info[i].cme_cycle_start, info[i].exam_type, info[i].receipt_title);				row += info[i].category_title;				row += "</td>";				if (info[i].exam_type == "Admin") {					row += "<td style='width:20%;' onclick='javascript:edit_financial_modal(" + JSON.stringify(info[i]) + ")'>";				} else {					row += "<td style='width:20%;'>";				}				row += info[i].pay_amount;				row += "</td>";				row += "</tr>";				rows += row;			}			$("#financial_table_print").html(rows);		}	}	function showTable(info) {		var rows = "";		var row = "<input class='hidden' id='count_tr' value='" + info.length + "'/>";		if (info.length == 0) {			row = "<tr style='cursor:pointer;'>" +				"<td colspan='6' align='center'>No registered data</td>" +				"</tr>";			rows += row;		} else {			for (var i = 0; i < info.length; i++) {				row =					"<tr id='financial_tr" + i + "' style='cursor:pointer;'>" +					"<td align='center'>" +					"<input type='checkbox' id='check_financial" + i + "' " +					"onclick='javascript:tr_baground(" + i + ")'" +					"style='width:20px; height:20px; cursor:pointer;'/>" +					"</td>";				if (info[i].exam_type == "Admin") {					row += "<td onclick='javascript:edit_financial_modal(" + JSON.stringify(info[i]) + ")'>" +						info[i].readable_action_date + "</td>";				} else {					row += "<td>" + info[i].readable_action_date + "</td>";				}				row += "<td><a href='../index.php?dXNlcl9yb2xl=" + btoa("CAA") + "&dXNlcl9pZA===" + btoa(info[i].user_id) + "' target='_blank'>" + info[i].user_id + "</a></td>";				row +=					"<td>" +					"<a href='?content=content/financial_student&li_class=Financials&financial_id=" + info[i].user_id + "&member_name=" + info[i].full_name + "'>" +					info[i].full_name +					"</a>" +					"</td>";				if (info[i].exam_type == "Admin") {					row +=						"<td>" +						"<a href='?content=content/financial_type&li_class=Financials&financial_exam_type=" + info[i].exam_type + "&financial_receipt_title=" + info[i].receipt_title + "'>" +						info[i].category_title +						"</a>" +						"</td>";				} else if (info[i].exam_type == "CME") {					row +=						"<td>" +						"<a href='?content=content/financial_type&li_class=Financials&financial_exam_type=" + info[i].exam_type + "&exam_mon=" + info[i].exam_mon + "&exam_year=" + info[i].cme_cycle_start + "'>" +						// category_title(info[i].exam_mon, info[i].exam_year, info[i].cme_cycle_start, info[i].exam_type, info[i].receipt_title) +						info[i].category_title +						"</a>" +						"</td>";				} else {					row +=						"<td>" +						"<a href='?content=content/financial_type&li_class=Financials&financial_exam_type=" + info[i].exam_type + "&exam_mon=" + info[i].exam_mon + "&exam_year=" + info[i].exam_year + "'>" +						// category_title(info[i].exam_mon, info[i].exam_year, info[i].cme_cycle_start, info[i].exam_type, info[i].receipt_title) +						info[i].category_title +						"</a>" +						"</td>";				}				if (info[i].exam_type == "Admin") {					row +=						"<td onclick='javascript:edit_financial_modal(" + JSON.stringify(info[i]) + ")'>" +						info[i].pay_amount +						"</td>" +						"</tr>";				} else {					row +=						"<td>" +						info[i].pay_amount +						"</td>" +						"</tr>";				}				rows += row;			}		}		$("#financial_table_main").html(rows);	}	/*    *  Serhii Code End    * */	$('.datepicker').datepicker({		autoclose: true,	});    $('#financialLedger').DataTable( {        "pageLength": 20,		"deferRender": true,		"orderClasses": false,		// searching: true,		paging: false, // hide pagination		info: false, // hide info area		bLengthChange : false, // thought this line could hide the LengthMenu		bFilter: false, // hide filter box		lengthMenu: [10, 50, 100, 500],    } );	    $('#financialLedger_length').css('display', 'block');	    $('#financialLedger_info').css('display', 'block');		// if($.fn.dataTable.isDataTable("#financialLedger")){				// $("#financialLedger").css("display", "block");			// }			$('#add_cert').click(function(e) {				$("#add_cert_modal").modal('show');			});		$('#add_cdq').click(function(e) {				$("#add_cdq_modal").modal('show');			});		$('#add_cme').click(function(e) {				$("#add_cme_modal").modal('show');			});		$('#add_admin').click(function(e) {				$("#add_admin_modal").modal('show');			});	$("#cert_name").select2();	$("#cdq_name").select2();	$("#cme_name").select2();} );/**  Serhii Code Start* */function convert_date(num) {	var date = new Date(num * 1000);	var dd = date.getDate();	var mm = date.getMonth() + 1;	var yyyy = date.getFullYear();	if(dd < 10) {		dd = "0" + dd;	}	if(mm < 10) {		mm = "0" + mm;	}	return mm + "/" + dd + "/" + yyyy;}function numberFormat(num, digit) {	return "$" + parseInt(num).toFixed(digit);}/**  Serhii Code End* */function init_cert_fields(){		$('#cert_name').val(0);	$('#cert_date').val('');	$('#cert_4cardnum').val('');	$('#cert_month').val(0);	$('#cert_year').val('');	$('#cert_category').val(0);	$('#cert_amount').val('');	}function init_cdq_fields(){		$('#cdq_name').val(0);	$('#cdq_date').val('');	$('#cdq_4cardnum').val('');	$('#cdq_month').val(0);	$('#cdq_year').val('');	$('#cdq_category').val(0);	$('#cdq_amount').val('');	}function init_cme_fields(){		$('#cme_name').val(0);	$('#cme_date').val('');	$('#cme_4cardnum').val('');	$('#cme_year').val('');	$('#cme_category').val(0);	$('#cme_amount').val('');	}/*function init_admin_fields(){		$('#cme_name').val('');	$('#cme_date').val('');	$('#cme_4cardnum').val('');	$('#cme_year').val('');	$('#cme_category').val('');	$('#cme_amount').val('');	}*/function cert_category_change(){		var cert = $('#cert_category').val();	if(cert == 1){		$('#cert_amount').val(1327.5);	}else if(cert == 2){		$('#cert_amount').val(1593);	}else{		$('#cert_amount').val(150);	}	}function cdq_category_change(){		var cdq = $('#cdq_category').val();	if(cdq == 1){		$('#cdq_amount').val(1000);	}else if(cdq == 2){		$('#cdq_amount').val(1327.5);	}else{		$('#cdq_amount').val(150);	}	}function cme_category_change(){		var cme = $('#cme_category').val();	if(cme == 1){		$('#cme_amount').val(235);	}else{		$('#cme_amount').val(735);	}	}$('#add_cert_info').click(function() {		if($('#cert_name').val() == "" || $('#cert_name').val() == 0){		alert("Please select student");		$('#cert_name').focus();		return;	}else if($('#cert_date').val() == ""){		$('#cert_date').focus();		return;	}else if($('#cert_4cardnum').val() == ""){		$('#cert_4cardnum').focus();		return;	}else if($('#cert_month').val() == "" || $('#cert_month').val() == 0){		alert("Please select exam month.");		$('#cert_month').focus();		return;	}else if($('#cert_year').val() == "" || $('#cert_year').val() == 0){		$('#cert_year').focus();		return;	}else if($('#cert_category').val() == ""){		$('#cert_category').focus();		return;	}		fieldData = {		cert_name: $('#cert_name').val(),		cert_date: $('#cert_date').val(),		cert_4cardnum: $('#cert_4cardnum').val(),		cert_month: $('#cert_month').val(),		cert_year: $('#cert_year').val(),		cert_category: $('#cert_category').val(),		cert_amount: $('#cert_amount').val()	};	$.ajax({		url: './content/financialAPI.php',		type: 'POST',		dataType: 'json',		data: fieldData,		success: function(data) {			if(data['statusCode'] == 1){								init_cert_fields();				jQuery.gritter.add({					title: 'Success!',					text: 'Saved successfully!',					sticky: false,					class_name: 'bg-success',					time: '1000'								});				$('#cert_name').focus();			}else if(data['statusCode'] == 0){				jQuery.gritter.add({					title: 'Failed!',					text: 'Failed.',					sticky: false,					class_name: 'bg-error',					time: '1000'								});			}		},		error: function(data) {			jQuery.gritter.add({				title: 'Failed!',				text: 'Failed.',				sticky: false,				class_name: 'bg-error',				time: '1000'							});		}	});	});$('#add_cdq_info').click(function() {		if($('#cdq_name').val() == "" || $('#cdq_name').val() == 0){		alert("Please select CAA");		$('#cdq_name').focus();		return;	}else if($('#cdq_date').val() == ""){		$('#cdq_date').focus();		return;	}else if($('#cdq_4cardnum').val() == ""){		$('#cdq_4cardnum').focus();		return;	}else if($('#cdq_month').val() == "" || $('#cdq_month').val() == 0){		alert("Please select exam month.");		$('#cdq_month').focus();		return;	}else if($('#cdq_year').val() == "" || $('#cdq_year').val() == 0){		$('#cdq_year').focus();		return;	}else if($('#cdq_category').val() == ""){		$('#cdq_category').focus();		return;	}		fieldData = {		cdq_name: $('#cdq_name').val(),		cdq_date: $('#cdq_date').val(),		cdq_4cardnum: $('#cdq_4cardnum').val(),		cdq_month: $('#cdq_month').val(),		cdq_year: $('#cdq_year').val(),		cdq_category: $('#cdq_category').val(),		cdq_amount: $('#cdq_amount').val()	};	$.ajax({		url: './content/financialAPI.php',		type: 'POST',		dataType: 'json',		data: fieldData,		success: function(data) {			if(data['statusCode'] == 1){								init_cdq_fields();				jQuery.gritter.add({					title: 'Success!',					text: 'Saved successfully!',					sticky: false,					class_name: 'bg-success',					time: '1000'								});				$('#cdq_name').focus();			}else if(data['statusCode'] == 0){				jQuery.gritter.add({					title: 'Failed!',					text: 'Failed.',					sticky: false,					class_name: 'bg-error',					time: '1000'								});			}		},		error: function(data) {			jQuery.gritter.add({				title: 'Failed!',				text: 'Failed.',				sticky: false,				class_name: 'bg-error',				time: '1000'							});		}	});	});$('#add_cme_info').click(function() {		if($('#cme_name').val() == "" || $('#cme_name').val() == 0){		alert("Please select CAA");		$('#cme_name').focus();		return;	}else if($('#cme_date').val() == ""){		$('#cme_date').focus();		return;	}else if($('#cme_4cardnum').val() == ""){		$('#cme_4cardnum').focus();		return;	}else if($('#cme_year').val() == "" || $('#cme_year').val() == 0){		$('#cme_year').focus();		return;	}else if($('#cme_category').val() == ""){		$('#cme_category').focus();		return;	}		fieldData = {		cme_name: $('#cme_name').val(),		cme_date: $('#cme_date').val(),		cme_4cardnum: $('#cme_4cardnum').val(),		cme_year: $('#cme_year').val(),		cme_category: $('#cme_category').val(),		cme_amount: $('#cme_amount').val()	};	$.ajax({		url: './content/financialAPI.php',		type: 'POST',		dataType: 'json',		data: fieldData,		success: function(data) {			if(data['statusCode'] == 1){								init_cme_fields();				jQuery.gritter.add({					title: 'Success!',					text: 'Saved successfully!',					sticky: false,					class_name: 'bg-success',					time: '1000'								});				$('#cme_name').focus();			}else if(data['statusCode'] == 0){				jQuery.gritter.add({					title: 'Failed!',					text: 'Failed.',					sticky: false,					class_name: 'bg-error',					time: '1000'								});			}		},		error: function(data) {			jQuery.gritter.add({				title: 'Failed!',				text: 'Failed.',				sticky: false,				class_name: 'bg-error',				time: '1000'							});		}	});	});function tr_baground(e){		if($("#check_financial" + e).is(':checked')){				$("#financial_tr" + e).css('background-color', '#B0BED9');			}else{				$("#financial_tr" + e).css('background-color', '');			}}function edit_financial_modal(record){	$("#edit_date").val(record.readable_action_date);	$("#edit_description").val(record.first_name);	$("#edit_category").val(record.receipt_title);	$("#edit_amount").val(numberFormat(record.amount_num, 2));	$("#edit_id").val(record.id);	$('#edit_financial').modal('show');}function update_financial(){		var fieldData = {				edit_id: $("#edit_id").val(),				edit_date: $('#edit_date').val(),				edit_description: $('#edit_description').val(),				edit_category: $('#edit_category').val(),				edit_amount: $('#edit_amount').val(),				add_amount: ''			};	$.ajax({				url: '?content=content/financial&li_class=Financials&li_class=Financials',				type: 'POST',				dataType: 'json',				data: fieldData,				success: function(data) {							location.href = '?content=content/financial&li_class=Financials';		},				error: function(data) {							location.href = '?content=content/financial&li_class=Financials';					}	});	}function delete_financial(){		var fieldData = {				delete_id: $("#edit_id").val(),		add_amount: ''	};		$.ajax({				url: '?content=content/financial&li_class=Financials&li_class=Financials',				type: 'POST',				dataType: 'json',				data: fieldData,				success: function(data) {							location.href = '?content=content/financial&li_class=Financials';		},		error: function(data) {				location.href = '?content=content/financial&li_class=Financials';		}	});}function financial_filter_year(){	var select_year = $('#select_year').val();	var select_term = $('#select_term').val();	var select_type = $('#select_type').val();	if(select_year != 'null'){		if(select_year == new Date().getFullYear() && select_term == 'Last_Year'){						select_term = 'null';		}else if((select_year == (new Date().getFullYear() - 1)) && (select_term == 'Today' || select_term == 'Week' || select_term == 'Month' || select_term == 'Quarter' || select_term == 'Year')){					select_term = 'null';				}else if((select_year > new Date().getFullYear()) && (select_term == 'Today' || select_term == 'Week' || select_term == 'Month' || select_term == 'Quarter' || select_term == 'Year' || select_term == 'Last_Year')){					select_term = 'null';				}			}	location.href = "?content=content/financial&li_class=Financials&s_year=" + select_year + "&s_term=" + select_term + "&s_type=" + select_type + "";}function financial_filter_term(){	var select_year = $('#select_year').val();	var select_term = $('#select_term').val();	var select_type = $('#select_type').val();	if(select_term == 'Today' || select_term == 'Week' || select_term == 'Month' || select_term == 'Quarter' || select_term == 'Year'){		select_year = new Date().getFullYear();	}else if(select_term == 'Last_Year'){		select_year = (new Date().getFullYear() - 1);	}	location.href = "?content=content/financial&li_class=Financials&s_year=" + select_year + "&s_term=" + select_term + "&s_type=" + select_type + "";}function financial_filter_type(){	var select_year = $('#select_year').val();	var select_term = $('#select_term').val();	var select_type = $('#select_type').val();;	location.href = "?content=content/financial&li_class=Financials&s_year=" + select_year + "&s_term=" + select_term + "&s_type=" + select_type + "";	}//newWin.document.write("<style> td:nth-child(2){display:none;} </style>");function checked_tr_hide(){	for(var i = 0; i < gTotalRow; i++){		if($("#check_financial" + i).is(':checked')){			true;		}else{			$("#print_financial_tr" + i).css('display', 'none');		}	}}function print_admin_financial(elem){		// $(".close").hide();		checked_tr_hide();		$("#print_financialLedger").show();		$("div").hide();	    var domClone = elem.cloneNode(true);        var $printSection = document.getElementById("printSection");        if (!$printSection) {		        var $printSection = document.createElement("div");		        $printSection.id = "printSection";		        document.body.appendChild($printSection);		    }    $printSection.innerHTML = "";    $printSection.appendChild(domClone);    window.print();	location.href = "?content=content/financial&li_class=Financials";}
