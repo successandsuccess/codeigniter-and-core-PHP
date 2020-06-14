@@ -26,11 +26,11 @@ if (!defined('PHP_VERSION_ID')) {
 
 define( DB_HOST, 'localhost' );
 
-define( DB_USER, 'nccaatest_server' );
+define( DB_USER, 'demouser1nccaa' );
 
-define( DB_PASS, 'RYYY%jjjYY123' );
+define( DB_PASS, 'bMkJ03A77777' );
 
-define( DB_NAME, 'nccaatest_server' );
+define( DB_NAME, 'demotest1nccaa' );
 
 
 
