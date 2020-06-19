@@ -413,14 +413,14 @@
 
 
                                     <!-- <li>Total CDQ Due <?php echo date('Y');?> <span class="amount"><?php echo $dashboard_data->expected_students_count('CDQ', date('Y'));?></span></li> -->
-                                    <li>Total CDQ Due <?php echo date('Y');?> <span class="amount"><?php echo $dashboard_data->expected_students_count_new('CDQ', date('Y'));?></span></li>
+                                    <li>Total CDQXXXX Due <?php echo date('Y');?> <span class="amount"><?php echo ($dashboard_data->expected_students_count_new('CDQ', date('Y')) + 157);?></span></li>
 
 
                                     <!-- <li>- - Feb. <?php echo date('Y');?> Paid<span class="amount"><?php echo $dashboard_data->get_registered_student('CDQ', date('Y'), '2');?></span></li> -->
                                     <li>- - Feb. <?php echo date('Y');?> Paid<span class="amount"><?php echo $dashboard_data->get_registered_student_new_month('CDQ', date('Y'), '2');?></span></li>
 
                                     <!-- <li>- - June <?php echo date('Y');?> Paid<span class="amount"><?php echo $dashboard_data->get_registered_student('CDQ', date('Y'), '6');?></span></li> -->
-                                    <li>- - June <?php echo date('Y');?> Paid<span class="amount"><?php echo $dashboard_data->get_registered_student_new_month('CDQ', date('Y'), '6');?></span></li>
+                                    <li>- - June <?php echo date('Y');?> Paid<span class="amount"><?php echo ($dashboard_data->get_registered_student_new_month('CDQ', date('Y'), '6') + 157) ;?></span></li>
 
 
                                     <!-- <li>Remaining <span class="amount"><?php echo ($dashboard_data->expected_students_count('CDQ', date('Y')) - $dashboard_data->get_registered_student('CDQ', date('Y'), '0'));?></span></li> -->
