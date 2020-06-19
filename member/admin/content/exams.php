@@ -12,9 +12,10 @@
    ?>
 <style>
    .dataTables_length, .dataTables_info {
-   display: block !important;
+      display: block !important;
    }
 </style>
+
 <div class="member-cards card">
 <h3 class="exam-title">Exams</h3>
 <div class="form-group">
@@ -212,73 +213,23 @@
       <button class="save_data" id="save_data">SAVE</button>
    </div>
 </div>
+
 <script>
-   $('.exam-stable').DataTable({
-   
-   
-   
-      order: [3, 'desc'],
-   
-   
-   
-      lengthMenu: [50, 100, 250, 500],
-   
-   
-   
-      columnDefs: [
-   
-   
-   
-         {
-   
-   
-   
-            targets: [6,7],
-   
-   
-   
-            render: function (data, type, full, meta){
-   
-   
-   
-               if(type === 'filter' || type === 'sort'){
-   
-   
-   
-                  var api = new $.fn.dataTable.Api(meta.settings);
-   
-   
-   
-                  var td = api.cell({row: meta.row, column: meta.col}).node();
-   
-   
-   
-                  data = $('select, input', td).val();
-   
-   
-   
-               }
-   
-   
-   
-               return data;
-   
-   
-   
+$('.exam-stable').DataTable({
+   order: [3, 'desc'],
+   lengthMenu: [50, 100, 250, 500],
+   columnDefs: [
+      {
+         targets: [6,7],
+         render: function (data, type, full, meta){
+            if(type === 'filter' || type === 'sort'){
+               var api = new $.fn.dataTable.Api(meta.settings);
+               var td = api.cell({row: meta.row, column: meta.col}).node();
+               data = $('select, input', td).val();
             }
-   
-   
-   
+            return data;
          }
-   
-   
-   
-      ],
-   
-   
-   
-   });
-   
-   
-   
+      }
+   ],
+});
 </script>

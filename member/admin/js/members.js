@@ -2,8 +2,8 @@ var gTotalRow = 0;
 var maxinumPageButton = 7;
 var sideButtonNumber = 3;
 var orderBy = {
-    column: "id",
-    desc: true,
+    column: "role",
+    desc: false,
 };
 
 $(document).ready(function () {

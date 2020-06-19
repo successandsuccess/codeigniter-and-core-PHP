@@ -66,9 +66,11 @@
    width: 30px;
    height: 30px;background:url(../../images/next.png) no-repeat center center !important;
    }
+
    .dataTables_length, .dataTables_info {
-   display: block !important;
+      display: block !important;
    }
+
 </style>
 <div class="member-cards card">
 <h3 class="exam-title">Exams</h3>
@@ -194,7 +196,7 @@
              {
          ?>
       <tr>
-         <td><?php echo $rec[0]['user_id'] ?></td>
+         <td><?php echo $rec[0]['user_id']?></td>
          <td><?php echo '<a href="../index.php?dXNlcl9yb2xl=' . base64_encode('Student') . '&dXNlcl9pZA===' . base64_encode($rec[0]['user_id']) . '" target="_blank">' . $rec[0]['first_name'] . '</a>'; ?></td>
          <td><?php echo '<a href="../index.php?dXNlcl9yb2xl=' . base64_encode('Student') . '&dXNlcl9pZA===' . base64_encode($rec[0]['user_id']) . '" target="_blank">' . $rec[0]['last_name'] . '</a>'; ?></td>
          <td><?php $date = getdate($rec[0]['action_date']);
@@ -295,72 +297,21 @@
    </div>
 </div>
 <script>
-   $('.certification-stable').DataTable({
-   
-   
-   
-      order:[3, 'desc'],
-   
-   
-   
-      lengthMenu: [50, 100, 250, 500],
-   
-   
-   
-      columnDefs: [
-   
-   
-   
-         {
-   
-   
-   
-            targets: [6,7],
-   
-   
-   
-            render: function (data, type, full, meta){
-   
-   
-   
-               if(type === 'filter' || type === 'sort'){
-   
-   
-   
-                  var api = new $.fn.dataTable.Api(meta.settings);
-   
-   
-   
-                  var td = api.cell({row: meta.row, column: meta.col}).node();
-   
-   
-   
-                  data = $('select, input', td).val();
-   
-   
-   
-               }
-   
-   
-   
-               return data;
-   
-   
-   
+$('.certification-stable').DataTable({
+   order:[3, 'desc'],
+   lengthMenu: [50, 100, 250, 500],
+   columnDefs: [
+      {
+         targets: [6,7],
+         render: function (data, type, full, meta){
+            if(type === 'filter' || type === 'sort'){
+               var api = new $.fn.dataTable.Api(meta.settings);
+               var td = api.cell({row: meta.row, column: meta.col}).node();
+               data = $('select, input', td).val();
             }
-   
-   
-   
+            return data;
          }
-   
-   
-   
-      ],
-   
-   
-   
-   });
-   
-   
-   
+      }
+   ],
+});
 </script>

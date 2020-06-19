@@ -34,8 +34,173 @@ class ExamObject {
         $stmt = $content[$id];
         return $stmt;
     }
+
+
     // read all datas
     public function readAll($date) {
+
+        $covid_extended_users_id = [
+            9
+            ,21
+            ,46
+            ,52
+            ,56
+            ,87
+            ,88
+            ,90
+            ,92
+            ,100
+            ,128
+            ,180
+            ,217
+            ,222
+            ,230
+            ,258
+            ,266
+            ,287
+            ,290
+            ,291
+            ,295
+            ,311
+            ,346
+            ,360
+            ,406
+            ,443
+            ,448
+            ,468
+            ,484
+            ,486
+            ,490
+            ,519
+            ,522
+            ,559
+            ,569
+            ,597
+            ,598
+            ,601
+            ,611
+            ,665
+            ,668
+            ,687
+            ,689
+            ,690
+            ,778
+            ,787
+            ,788
+            ,855
+            ,881
+            ,908
+            ,928
+            ,944
+            ,965
+            ,979
+            ,1005
+            ,1010
+            ,1015
+            ,1028
+            ,1044
+            ,1054
+            ,1060
+            ,1066
+            ,1084
+            ,1094
+            ,1095
+            ,1112
+            ,1129
+            ,1145
+            ,1149
+            ,1174
+            ,1202
+            ,1219
+            ,1284
+            ,1291
+            ,1292
+            ,1294
+            ,1296
+            ,1302
+            ,1334
+            ,1342
+            ,1360
+            ,1361
+            ,1366
+            ,1367
+            ,1382
+            ,1388
+            ,1439
+            ,1441
+            ,1480
+            ,1482
+            ,1490
+            ,1503
+            ,1562
+            ,1584
+            ,1589
+            ,1602
+            ,1615
+            ,1629
+            ,1637
+            ,1646
+            ,1655
+            ,1682
+            ,1690
+            ,1703
+            ,1778
+            ,1797
+            ,1817
+            ,1828
+            ,1830
+            ,1865
+            ,1873
+            ,1901
+            ,1905
+            ,1926
+            ,1927
+            ,1934
+            ,1945
+            ,1961
+            ,2000
+            ,2014
+            ,2018
+            ,2067
+            ,2103
+            ,2118
+            ,2136
+            ,2162
+            ,2175
+            ,2194
+            ,2200
+            ,2202
+            ,2230
+            ,2236
+            ,2274
+            ,2275
+            ,2284
+            ,2297
+            ,2298
+            ,2303
+            ,2344
+            ,2390
+            ,2402
+            ,2426
+            ,2435
+            ,2445
+            ,2475
+            ,2530
+            ,2539
+            ,2546
+            ,2553
+            ,2563
+            ,2569
+            ,2586
+            ,3045
+            ,3054
+            ,3103
+            ,3112
+            ,3113
+            ,3114
+            ]; 
+
+
         $select_exam_date = getdate(strtotime('2019-01-01'));
         $users = "SELECT id FROM " . $this->table_user;
         $users_id = $this->conn->getData($users);
@@ -47,10 +212,25 @@ class ExamObject {
                 $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=" . $member['id'] . " AND exam_mon=2 AND exam_year=" . ($select_exam_date['year'] + 1);
             }
             if (empty($date) == false && $date == 61) {
-                $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=" . $member['id'] . " AND exam_mon=6 AND exam_year=" . ($select_exam_date['year'] + 1);
+                if ( in_array($member['id'], $covid_extended_users_id) )
+                {
+                    $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=" . $member['id'] . " AND exam_mon=2 AND exam_year=" . ($select_exam_date['year'] + 2);
+                }
+                else
+                {
+                    $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=" . $member['id'] . " AND exam_mon=6 AND exam_year=" . ($select_exam_date['year'] + 1);
+                }
             }
             if (empty($date) == false && $date == 22) {
-                $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=" . $member['id'] . " AND exam_mon=2 AND exam_year=" . ($select_exam_date['year'] + 2);
+
+                if ( in_array($member['id'], $covid_extended_users_id) )
+                {
+                    $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=999999 AND exam_mon=2 AND exam_year=" . ($select_exam_date['year'] + 2);
+                }
+                else
+                {
+                    $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=" . $member['id'] . " AND exam_mon=2 AND exam_year=" . ($select_exam_date['year'] + 2);
+                }
             }
             if (empty($date) == false && $date == 62) {
                 $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=" . $member['id'] . " AND exam_mon=6 AND exam_year=" . ($select_exam_date['year'] + 2);
@@ -61,9 +241,11 @@ class ExamObject {
             if (empty($date) == false && $date == 63) {
                 $query = "SELECT * FROM " . $this->table_action . " where action_num < 6 AND id=(select max(id) from " . $this->table_action . " WHERE user_id=" . $member['id'] . ") AND user_id=" . $member['id'] . " AND exam_mon=6 AND exam_year=" . ($select_exam_date['year'] + 3);
             }
-            if (empty($this->conn->getData($query)) == false) {
+      
+            if (empty($this->conn->getData($query)) == false && $query != "" ) {
                 $stmt[$member['id']] = $this->conn->getData($query);
             }
+         
         }
         if (empty($stmt) == false) {
             return $stmt;
