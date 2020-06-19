@@ -6,7 +6,6 @@ class PaymentHistoryCdq
     private $userInfo;
     private $table_name = "tbl_cdqhistory";
     private $table_payment = "tbl_payment";
-    
     private $table_user = "users";
     private $table_cdq = "incomecdq";
     private $table_action = "action_history_cdq";
@@ -57,13 +56,10 @@ class PaymentHistoryCdq
         $query = "SELECT p.*, cd.exam, u.* FROM " . $this->table_name . " ch 
 
 
-
         INNER JOIN " . $this->table_payment . " p ON ch.payment_id=p.id 
 
 
-
         INNER JOIN " . $this->table_cdq . " cd ON ch.incomecdq_id=cd.id
-
 
 
         INNER JOIN " . $this->table_user . " u ON ch.user_id=u.id ORDER BY ch.id DESC";
@@ -109,25 +105,19 @@ class PaymentHistoryCdq
         return "
 
 
-
             <script type=\"text/javascript\">
-
 
 
             $(document).ready(function() {
 
 
-
                 $('#paymentContentModal').modal('show');
-
 
 
              });
 
 
-
             </script>
-
 
 
         ";
@@ -137,29 +127,22 @@ class PaymentHistoryCdq
         return "
 
 
-
             <script type=\"text/javascript\">
-
 
 
             $(document).ready(function() {
 
 
-
                 $('#receiptmodal_body').css({'display':'block'});
-
 
 
                 $('#receiptContentModal').modal('show');
 
 
-
              });
 
 
-
             </script>
-
 
 
         ";
@@ -366,11 +349,17 @@ class PaymentHistoryCdq
                 {
                     $title = "CDQ Exam (Main " . $cdq_exam_year . ")";
                 }
-                //Jan.15 - May.30(late)
+				//Jan.15 - May.30(late)
                 if (($n_date[0] > $mkJan15) && ($n_date['mon'] < 6))
                 {
                     $title = "CDQ Exam (Late " . $cdq_exam_year . ")";
-                }
+				}
+				
+				$late_CDQ_covid_users = [56, 222, 1873, 2018, 1334, 1828, 2303, 1382, 1361, 2284, 689];
+				if( in_array($_SESSION['user_id'], $late_CDQ_covid_users ) && $n_date['year'] == 2020 )
+				{
+					$title = "CDQ Exam (Late " . $cdq_exam_year . ")";
+				}
             }
             else if (empty($stmt[0]['action_num']) == false)
             {
