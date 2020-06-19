@@ -487,8 +487,8 @@ class PaymentHistoryCdq
             }
         }
         //first_name and last_name
-        $first_name = $this->split_name($data['exam_name']) [0];
-        $last_name = $this->split_name($data['exam_name']) [1];
+        $first_name = $this->splitName($data['exam_name']) [0];
+        $last_name = $this->splitName($data['exam_name']) [1];
         $final_card_num = substr($data['number'], -4);
         //getdate
         $n_date = getdate(date("U"));

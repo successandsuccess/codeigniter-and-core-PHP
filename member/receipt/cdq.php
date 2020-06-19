@@ -20,40 +20,32 @@ $db = new Database();
 include_once "../../incomecdq/classes/historycdq.class.php";
 $cdqhistory = new PaymentHistoryCdq();
 $receipt_cdq = $cdqhistory->readByReceiptId($_GET['receipt_id']);
-if ((empty($_GET['exam_type']) == false) && ($_GET['exam_type'] == "CDQ"))
-{
+if ((empty($_GET['exam_type']) == false) && ($_GET['exam_type'] == "CDQ")){
     $receipt_cdq = $cdqhistory->readReceiptHistory($_GET['receipt_id']);
 }
 $re_arr1 = explode("Main", $receipt_cdq['receipt_title']);
 $re_arr2 = explode("Late", $receipt_cdq['receipt_title']);
 $re_arr3 = explode("#1", $receipt_cdq['receipt_title']);
 $re_arr4 = explode("#2", $receipt_cdq['receipt_title']);
-if (count($re_arr1) > 1)
-{
+if (count($re_arr1) > 1){
     $receipt_title = "CDQ Initial Exam";
 }
-if (count($re_arr2) > 1)
-{
+if (count($re_arr2) > 1){
     $receipt_title = "CDQ Initial Exam";
 }
-if (count($re_arr3) > 1)
-{
+if (count($re_arr3) > 1){
     $receipt_title = "CDQ Exam";
 }
-if (count($re_arr4) > 1)
-{
+if (count($re_arr4) > 1){
     $receipt_title = "CDQ Exam";
 }
 $receipt_date = getdate($receipt_cdq['action_date']);
 $receipt_title_day = $cdqhistory->expectedExamDate($receipt_cdq['exam_mon'], $receipt_cdq['exam_year'], 'full');
 $receipt_due_date = $cdqhistory->expectedExamDate($receipt_cdq['exam_mon'], $receipt_cdq['exam_year'], 'due');
 $sub_title = "For " . $receipt_title_day . " CDQ Exam";
-if ($receipt_cdq['card_num4'])
-{
+if ($receipt_cdq['card_num4']){
     $final_card_num = $receipt_cdq['card_num4'];
-}
-else
-{
+}else{
     $final_card_num = "N/A";
 }
 $out = '
@@ -301,7 +293,7 @@ $out = '
 
 
 
-								Cynthia Maraugha
+								Fiona Sanchez
 
 
 
@@ -317,7 +309,7 @@ $out = '
 
 
 
-								<i>Director of Operations</i>
+								<i>Secretary</i>
 
 
 
@@ -333,7 +325,7 @@ $out = '
 
 
 
-								<i class="fa fa-phone"></i> 859-903-0089
+								<i class="fa fa-phone"></i> 212-396-5501
 
 
 
@@ -349,7 +341,7 @@ $out = '
 
 
 
-								<i class="fa fa-envelope"></i> cynthia.m@nccaa.org
+								<i class="fa fa-envelope"></i> fiona@gmail.com
 
 
 
